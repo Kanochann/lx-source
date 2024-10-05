@@ -140,8 +140,8 @@ func refresh(loger *logs.Logger, now int64) error {
 	env.Config.Custom.Tx_Uuin = resp.Req1.Data.StrMusicId
 	env.Config.Custom.Tx_Ukey = resp.Req1.Data.MusicKey
 	tnow := time.Now()
-	env.Config.Custom.Tx_Refresh_Interval = time.Date(tnow.Year(), tnow.Month(), tnow.Day()+5, 0, 0, 0, 0, tnow.Location()).Unix()
-	// env.Config.Custom.Tx_Refresh_Interval = now + 432000 //(每5天刷新一次) //1209600 - 86000 // 14天提前一天
+	env.Config.Custom.Tx_Refresh_Interval = time.Date(tnow.Year(), tnow.Month(), tnow.Day()+2, 0, 0, 0, 0, tnow.Location()).Unix()
+	// env.Config.Custom.Tx_Refresh_Interval = now + 432000 //(每5天刷新一次) //1209600 - 86400 // 14天提前一天
 	loger.Debug(`Resp: %+v`, resp)
 	loger.Debug(`Uuin: %v, Ukey: %v`, resp.Req1.Data.StrMusicId, resp.Req1.Data.MusicKey)
 	loger.Debug(`ExpiresAt: %v, Real: %v`, resp.Req1.Data.ExpiredAt, env.Config.Custom.Tx_Refresh_Interval)
@@ -159,7 +159,7 @@ func refresh(loger *logs.Logger, now int64) error {
 func init() {
 	env.Inits.Add(func() {
 		if env.Config.Custom.Tx_Refresh_Enable && env.Config.Custom.Tx_Ukey != `` && env.Config.Custom.Tx_Uuin != `` {
-			env.Tasker.Add(`tx_refresh`, refresh, 86000, true)
+			env.Tasker.Add(`tx_refresh`, refresh, 86400, true)
 		}
 	})
 }

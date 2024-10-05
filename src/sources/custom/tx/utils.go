@@ -54,7 +54,7 @@ var (
 func signRequest(data []byte, out any) error {
 	s := sign(data)
 	return ztool.Net_Request(http.MethodPost,
-		ztool.Str_FastConcat(`https://u.y.qq.com/cgi-bin/musics.fcg?format=json&sign=`, s),
+		ztool.Str_FastConcat(`https://u6.y.qq.com/cgi-bin/musics.fcg?format=json&sign=`, s),
 		bytes.NewReader(data),
 		[]ztool.Net_ReqHandlerFunc{
 			ztool.Net_ReqAddHeaders(header),

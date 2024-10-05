@@ -247,19 +247,19 @@ func init() {
 	env.Inits.Add(func() {
 		if env.Config.Custom.Kg_token != `` {
 			if env.Config.Custom.Kg_Lite_Enable && env.Config.Custom.Kg_Client_AppId == `3116` {
-				env.Tasker.Add(`kg_litsign`, do_account_signin, 86000, true)
+				env.Tasker.Add(`kg_litsign`, do_account_signin, 86400, true)
 			}
 			if env.Config.Custom.Kg_Refresh_Enable {
-				env.Tasker.Add(`kg_refresh`, login_by_token, 86000, true)
+				env.Tasker.Add(`kg_refresh`, login_by_token, 86400, true)
 			}
 		}
 		/*if env.Config.Custom.Kg_Lite_Enable {
 			if env.Config.Custom.Kg_Client_AppId == `3116` && env.Config.Custom.Kg_token != `` {
-				env.Tasker.Add(`kg_litsign`, do_account_signin, 86000, true)
+				env.Tasker.Add(`kg_litsign`, do_account_signin, 86400, true)
 			}
 		}
 		if env.Config.Custom.Kg_Refresh_Enable && env.Config.Custom.Kg_token != `` {
-			env.Tasker.Add(`kg_refresh`, login_by_token, 86000, true)
+			env.Tasker.Add(`kg_refresh`, login_by_token, 86400, true)
 		}*/
 	})
 }

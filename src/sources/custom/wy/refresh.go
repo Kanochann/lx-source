@@ -55,16 +55,16 @@ func refresh(loger *logs.Logger, now int64) error {
 			loger.Debug(`Cookie: %#v`, cookies)
 			// if _, ok := cmap[`MUSIC_U`]; ok {
 			// 	// MUSIC_U 改变 则 6天 后 继续执行
-			// 	env.Config.Custom.Wy_Refresh_Interval = now + 518400 //2147483647 - 86000
+			// 	env.Config.Custom.Wy_Refresh_Interval = now + 518400 //2147483647 - 86400
 			// 	loger.Debug(`MUSIC_U 改变, 6天 后 继续执行`)
 			// } else {
 			// 	// MUSIC_U 不变 则 1天 后 继续执行
-			// 	env.Config.Custom.Wy_Refresh_Interval = now + 86000
+			// 	env.Config.Custom.Wy_Refresh_Interval = now + 86400
 			// 	loger.Debug(`MUSIC_U 不变, 1天 后 继续执行`) //`未发现有效结果，将在下次检测时再次尝试`
 			// }
 			tnow := time.Now()
 			env.Config.Custom.Wy_Refresh_Interval = time.Date(tnow.Year(), tnow.Month(), tnow.Day()+1, 0, 0, 0, 0, tnow.Location()).Unix()
-			// env.Config.Custom.Wy_Refresh_Interval = now + 86000
+			// env.Config.Custom.Wy_Refresh_Interval = now + 86400
 			err = env.Cfg.Save(``)
 			if err == nil {
 				loger.Info(`配置更新成功`)
@@ -77,7 +77,7 @@ func refresh(loger *logs.Logger, now int64) error {
 func init() {
 	env.Inits.Add(func() {
 		if env.Config.Custom.Wy_Refresh_Enable && env.Config.Custom.Wy_Api_Cookie != `` {
-			env.Tasker.Add(`wy_refresh`, refresh, 86000, true)
+			env.Tasker.Add(`wy_refresh`, refresh, 86400, true)
 		}
 	})
 }

@@ -31,7 +31,7 @@ func refresh(loger *logs.Logger, now int64) error {
 func init() {
 	env.Inits.Add(func() {
 		if env.Config.Custom.Mg_Refresh_Enable && false {
-			env.Tasker.Add(`mg_refresh`, refresh, 86000, true)
+			env.Tasker.Add(`mg_refresh`, refresh, 86400, true)
 		}
 	})
 }

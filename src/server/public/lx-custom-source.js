@@ -10,7 +10,7 @@
 const version = '1.0.3' // 脚本版本
 const apiaddr = 'http://127.0.0.1:1011/' // 服务端地址，末尾加斜杠
 const apipass = '' // 验证密钥，填在单引号内
-const devmode = true // 调试模式
+const devmode = false // 调试模式
 // const timeout = 60 * 1000 // 请求超时(ms)
 
 // 常量 & 默认值

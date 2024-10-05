@@ -22,7 +22,11 @@ func getMusicInfo(songMid string) (infoBody musicInfo, emsg string) {
 			return
 		}
 	}
-	infoReqBody := ztool.Str_FastConcat(`{"comm":{"ct":"19","cv":"1859","uin":"0"},"req":{"method":"get_song_detail_yqq","module":"music.pf_song_detail_svr","param":{"song_mid":"`, songMid, `","song_type":0}}}`)
+	uin := "0"
+	if env.Config.Custom.Tx_Enable {
+		uin = env.Config.Custom.Tx_Uuin
+	}
+	infoReqBody := ztool.Str_FastConcat(`{"comm":{"ct":"19","cv":"1859","uin":"`, uin, `"},"req":{"method":"get_song_detail_yqq","module":"music.pf_song_detail_svr","param":{"song_mid":"`, songMid, `"}}}`)
 	var infoResp struct {
 		Code int `json:"code"`
 		// Ts      int64  `json:"ts"`

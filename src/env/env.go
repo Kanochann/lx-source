@@ -215,7 +215,8 @@ var (
 			SysLev:  false,
 			Timeout: 30,
 			Store:   `/data/memo.bin`,
-			ErrMp3:  `https://r2eu.zxwy.link/gh/lx-source/static/error.mp3`,
+			//ErrMp3:  `https://r2eu.zxwy.link/gh/lx-source/static/error.mp3`,
+			ErrMp3: ``,
 		},
 		Apis: Conf_Apis{
 			// BindAddr: `http://192.168.10.22:1011/`,
@@ -271,9 +272,9 @@ var (
 			Kg_Lite_MixId:       `auto`,
 
 			Tx_Enable:           false,
-			Tx_CDNUrl:           `https://isure6.stream.qqmusic.qq.com/`,
+			Tx_CDNUrl:           `http://ws.stream.qqmusic.qq.com/`,
 			Tx_Refresh_Enable:   false,
-			Tx_Refresh_Interval: 86000,
+			Tx_Refresh_Interval: 86400,
 		},
 		Script: Conf_Script{
 			Name:     `Lx-Source-Script`,

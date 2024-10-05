@@ -1,6 +1,7 @@
 module lx-source
 
-go 1.20
+go 1.22
+
 
 require (
 	github.com/ZxwyWebSite/cr-go-sdk v0.0.2

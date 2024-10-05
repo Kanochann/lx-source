@@ -5,4 +5,5 @@ data/
 # conf.ini
 test.go
 test_test.go
+.idea
 # src/sources/builtin/
